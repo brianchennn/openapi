@@ -203,7 +203,7 @@ type BulkDeleteRecordsResponse struct {
 }
 
 type BulkDeleteRecordsError struct {
-	RecordIdList models.ProblemDetails
+	ProblemDetails models.ProblemDetails
 }
 
 /*
@@ -448,12 +448,12 @@ type CreateOrModifyRecordResponse struct {
 }
 
 type CreateOrModifyRecordError struct {
-	CacheControl string
-	ETag         string
-	LastModified string
-	RetryAfter   interface{}
-	Record       models.ProblemDetails
-	Record       models.Record
+	CacheControl   string
+	ETag           string
+	LastModified   string
+	RetryAfter     interface{}
+	ProblemDetails models.ProblemDetails
+	Record         models.Record
 }
 
 /*
@@ -667,12 +667,12 @@ type DeleteRecordResponse struct {
 }
 
 type DeleteRecordError struct {
-	CacheControl string
-	ETag         string
-	LastModified string
-	RetryAfter   interface{}
-	Record       models.ProblemDetails
-	Record       models.Record
+	CacheControl   string
+	ETag           string
+	LastModified   string
+	RetryAfter     interface{}
+	ProblemDetails models.ProblemDetails
+	Record         models.Record
 }
 
 /*
@@ -869,10 +869,10 @@ type GetMetaResponse struct {
 }
 
 type GetMetaError struct {
-	CacheControl string
-	ETag         string
-	RetryAfter   interface{}
-	RecordMeta   models.ProblemDetails
+	CacheControl   string
+	ETag           string
+	RetryAfter     interface{}
+	ProblemDetails models.ProblemDetails
 }
 
 /*
@@ -1069,10 +1069,10 @@ type GetRecordResponse struct {
 }
 
 type GetRecordError struct {
-	CacheControl string
-	ETag         string
-	RetryAfter   interface{}
-	Record       models.ProblemDetails
+	CacheControl   string
+	ETag           string
+	RetryAfter     interface{}
+	ProblemDetails models.ProblemDetails
 }
 
 /*
@@ -1283,7 +1283,7 @@ type SearchRecordResponse struct {
 }
 
 type SearchRecordError struct {
-	RecordSearchResult models.ProblemDetails
+	ProblemDetails models.ProblemDetails
 }
 
 /*
@@ -1487,8 +1487,8 @@ type UpdateMetaResponse struct {
 }
 
 type UpdateMetaError struct {
-	CacheControl string
-	ETag         string
-	RetryAfter   interface{}
-	PatchResult  models.ProblemDetails
+	CacheControl   string
+	ETag           string
+	RetryAfter     interface{}
+	ProblemDetails models.ProblemDetails
 }

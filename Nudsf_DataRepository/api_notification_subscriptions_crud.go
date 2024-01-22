@@ -201,8 +201,8 @@ type GetNotificationSubscriptionsResponse struct {
 }
 
 type GetNotificationSubscriptionsError struct {
-	CacheControl             string
-	ETag                     string
-	RetryAfter               interface{}
-	NotificationSubscription models.ProblemDetails
+	CacheControl   string
+	ETag           string
+	RetryAfter     interface{}
+	ProblemDetails models.ProblemDetails
 }

@@ -1,7 +1,7 @@
 /*
  * Nudsf_DataRepository
  *
- * Nudsf Data Repository Service.   © 2022, 3GPP Organizational Partners (ARIB, ATIS, CCSA, ETSI, TSDSI, TTA, TTC).   All rights reserved. 
+ * Nudsf Data Repository Service.   © 2022, 3GPP Organizational Partners (ARIB, ATIS, CCSA, ETSI, TSDSI, TTA, TTC).   All rights reserved.
  *
  * Source file: 3GPP TS 29.598 UDSF Services, V17.6.0.
  * Url: https://www.3gpp.org/ftp/Specs/archive/29_series/29.598/
@@ -13,14 +13,14 @@
 package Nudsf_DataRepository
 
 import (
-    "github.com/free5gc/openapi"
-    "github.com/free5gc/openapi/models"
+	"github.com/free5gc/openapi"
+	"github.com/free5gc/openapi/models"
 
 	"context"
+	"fmt"
 	"io/ioutil"
 	"net/url"
 	"strings"
-	"fmt"
 )
 
 // Linger please
@@ -170,7 +170,7 @@ func (a *BlockCRUDApiService) CreateOrModifyBlock(ctx context.Context, request *
 
     switch localVarHTTPResponse.StatusCode {
         case 200:
-            err = openapi.Deserialize(&localVarReturnValue.map[string]interface{}, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+            err = openapi.Deserialize(&localVarReturnValue.Body, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
             if err != nil {
                 return nil, err
             }
@@ -224,7 +224,7 @@ func (a *BlockCRUDApiService) CreateOrModifyBlock(ctx context.Context, request *
             return nil, apiError
         case 412:
             var v CreateOrModifyBlockError
-            err = openapi.Deserialize(&v.map[string]interface{}, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+            err = openapi.Deserialize(&v.ProblemDetails, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
             if err != nil {
                 return nil, err
             }
@@ -264,18 +264,18 @@ func (a *BlockCRUDApiService) CreateOrModifyBlock(ctx context.Context, request *
 
 type CreateOrModifyBlockResponse struct {
     CacheControl string
-ETag string
-LastModified string
-Location string
-    map[string]interface{} map[string]interface{}
+    ETag string
+    LastModified string
+    Location string
+    Body map[string]interface{}
 }
 
 type CreateOrModifyBlockError struct {
     CacheControl string
-ETag string
-LastModified string
-    map[string]interface{} models.ProblemDetails
-map[string]interface{} map[string]interface{}
+    ETag string
+    LastModified string
+    ProblemDetails models.ProblemDetails
+    Body map[string]interface{}
 }
 
 /*
@@ -400,7 +400,7 @@ func (a *BlockCRUDApiService) DeleteBlock(ctx context.Context, request *DeleteBl
 
     switch localVarHTTPResponse.StatusCode {
         case 200:
-            err = openapi.Deserialize(&localVarReturnValue.map[string]interface{}, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+            err = openapi.Deserialize(&localVarReturnValue.Body, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
             if err != nil {
                 return nil, err
             }
@@ -451,7 +451,7 @@ func (a *BlockCRUDApiService) DeleteBlock(ctx context.Context, request *DeleteBl
             return nil, apiError
         case 412:
             var v DeleteBlockError
-            err = openapi.Deserialize(&v.map[string]interface{}, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+            err = openapi.Deserialize(&v.ProblemDetails, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
             if err != nil {
                 return nil, err
             }
@@ -483,16 +483,16 @@ func (a *BlockCRUDApiService) DeleteBlock(ctx context.Context, request *DeleteBl
 
 type DeleteBlockResponse struct {
     ETag string
-LastModified string
-    map[string]interface{} map[string]interface{}
+    LastModified string
+    Body map[string]interface{}
 }
 
 type DeleteBlockError struct {
     CacheControl string
-ETag string
-LastModified string
-    map[string]interface{} models.ProblemDetails
-map[string]interface{} map[string]interface{}
+    ETag string
+    LastModified string
+    ProblemDetails models.ProblemDetails
+    Body map[string]interface{}
 }
 
 /*
@@ -618,7 +618,7 @@ func (a *BlockCRUDApiService) GetBlock(ctx context.Context, request *GetBlockReq
 
     switch localVarHTTPResponse.StatusCode {
         case 200:
-            err = openapi.Deserialize(&localVarReturnValue.map[string]interface{}, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+            err = openapi.Deserialize(&localVarReturnValue.Body, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
             if err != nil {
                 return nil, err
             }
@@ -694,14 +694,14 @@ type GetBlockResponse struct {
     CacheControl string
 ETag string
 LastModified string
-    map[string]interface{} map[string]interface{}
+    Body map[string]interface{}
 }
 
 type GetBlockError struct {
     CacheControl string
 ETag string
 RetryAfter interface{}
-    map[string]interface{} models.ProblemDetails
+    ProblemDetails models.ProblemDetails
 }
 
 /*
@@ -801,7 +801,7 @@ func (a *BlockCRUDApiService) GetBlockList(ctx context.Context, request *GetBloc
 
     switch localVarHTTPResponse.StatusCode {
         case 200:
-            err = openapi.Deserialize(&localVarReturnValue.map[string]interface{}, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+            err = openapi.Deserialize(&localVarReturnValue.Body, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
             if err != nil {
                 return nil, err
             }
@@ -868,9 +868,9 @@ type GetBlockListResponse struct {
     CacheControl string
 ETag string
 LastModified string
-    map[string]interface{} map[string]interface{}
+    Body map[string]interface{}
 }
 
 type GetBlockListError struct {
-        map[string]interface{} models.ProblemDetails
+        ProblemDetails models.ProblemDetails
 }
