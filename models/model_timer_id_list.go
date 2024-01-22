@@ -14,8 +14,7 @@ package models
 
 
 
-// The execution report result on failed modification.
-type PatchResult struct {
-	// The execution report contains an array of report items. Each report item indicates one  failed modification. 
-	Report []*ReportItem `json:"report" yaml:"report" bson:"report"`
+// Represents a list of timer IDs.
+type TimerIdList struct {
+	TimerIds []*string `json:"timerIds" yaml:"timerIds" bson:"timerIds"`
 }
