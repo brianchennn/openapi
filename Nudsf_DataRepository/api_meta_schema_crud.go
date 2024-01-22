@@ -278,7 +278,7 @@ type CreateOrModifyMetaSchemaError struct {
 	ETag         string
 	RetryAfter   interface{}
 	MetaSchema   models.MetaSchema
-	MetaSchema   models.ProblemDetails
+	ProblemDetails   models.ProblemDetails
 }
 
 /*
@@ -491,7 +491,7 @@ type DeleteMetaSchemaError struct {
 	ETag         string
 	RetryAfter   interface{}
 	MetaSchema   models.MetaSchema
-	MetaSchema   models.ProblemDetails
+	ProblemDetails   models.ProblemDetails
 }
 
 /*
@@ -691,5 +691,5 @@ type GetMetaSchemaError struct {
 	CacheControl string
 	ETag         string
 	RetryAfter   interface{}
-	Record       models.ProblemDetails
+	ProblemDetails       models.ProblemDetails
 }

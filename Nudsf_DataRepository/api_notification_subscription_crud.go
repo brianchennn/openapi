@@ -218,7 +218,7 @@ func (a *NotificationSubscriptionCRUDApiService) CreateAndUpdateNotificationSubs
 		return nil, apiError
 	case 409:
 		var v CreateAndUpdateNotificationSubscriptionError
-		err = openapi.Deserialize(&v.string, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		err = openapi.Deserialize(&v.NotificationSubscription, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 		if err != nil {
 			return nil, err
 		}
@@ -271,7 +271,7 @@ type CreateAndUpdateNotificationSubscriptionError struct {
 	CacheControl             string
 	ETag                     string
 	RetryAfter               interface{}
-	NotificationSubscription models.ProblemDetails
+	ProblemDetails models.ProblemDetails
 	NotificationSubscription []*string
 }
 
@@ -480,7 +480,7 @@ type DeleteNotificationSubscriptionResponse struct {
 
 type DeleteNotificationSubscriptionError struct {
 	NotificationSubscription models.NotificationSubscription
-	NotificationSubscription models.ProblemDetails
+	ProblemDetails models.ProblemDetails
 }
 
 /*
@@ -680,7 +680,7 @@ type GetNotificationSubscriptionError struct {
 	CacheControl             string
 	ETag                     string
 	RetryAfter               interface{}
-	NotificationSubscription models.ProblemDetails
+	ProblemDetails models.ProblemDetails
 }
 
 /*
@@ -887,5 +887,5 @@ type UpdateNotificationSubscriptionError struct {
 	CacheControl string
 	ETag         string
 	RetryAfter   interface{}
-	PatchResult  models.ProblemDetails
+	ProblemDetails  models.ProblemDetails
 }
