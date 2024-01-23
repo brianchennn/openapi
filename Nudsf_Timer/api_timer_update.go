@@ -1,7 +1,7 @@
 /*
  * Nudsf_Timer
  *
- * Nudsf Timer Service.   © 2022, 3GPP Organizational Partners (ARIB, ATIS, CCSA, ETSI, TSDSI, TTA, TTC).   All rights reserved. 
+ * Nudsf Timer Service.   © 2022, 3GPP Organizational Partners (ARIB, ATIS, CCSA, ETSI, TSDSI, TTA, TTC).   All rights reserved.
  *
  * Source file: 3GPP TS 29.598 UDSF Services, V17.6.0.
  * Url: https://www.3gpp.org/ftp/Specs/archive/29_series/29.598/
@@ -13,14 +13,14 @@
 package Nudsf_Timer
 
 import (
-    "bitbucket.org/free5GC/openapi"
-    "bitbucket.org/free5GC/openapi/models"
+	"github.com/free5gc/openapi"
+	"github.com/free5gc/openapi/models"
 
 	"context"
+	"fmt"
 	"io/ioutil"
 	"net/url"
 	"strings"
-	"fmt"
 )
 
 // Linger please
@@ -45,27 +45,27 @@ update a specific Timer
 
 // UpdateTimerRequest
 type UpdateTimerRequest struct {
-    RealmId *string
-    StorageId *string
-    TimerId *string
-    PatchItem []*models.PatchItem
-    SupportedFeatures *string
+	RealmId           *string
+	StorageId         *string
+	TimerId           *string
+	PatchItem         []*models.PatchItem
+	SupportedFeatures *string
 }
 
 func (r *UpdateTimerRequest) SetRealmId(RealmId string) {
-    r.RealmId = &RealmId
+	r.RealmId = &RealmId
 }
 func (r *UpdateTimerRequest) SetStorageId(StorageId string) {
-    r.StorageId = &StorageId
+	r.StorageId = &StorageId
 }
 func (r *UpdateTimerRequest) SetTimerId(TimerId string) {
-    r.TimerId = &TimerId
+	r.TimerId = &TimerId
 }
 func (r *UpdateTimerRequest) SetPatchItem(PatchItem []*models.PatchItem) {
-    r.PatchItem = PatchItem
+	r.PatchItem = PatchItem
 }
 func (r *UpdateTimerRequest) SetSupportedFeatures(SupportedFeatures string) {
-    r.SupportedFeatures = &SupportedFeatures
+	r.SupportedFeatures = &SupportedFeatures
 }
 
 func (a *TimerUpdateApiService) UpdateTimer(ctx context.Context, request *UpdateTimerRequest) (*UpdateTimerResponse, error) {
@@ -87,17 +87,17 @@ func (a *TimerUpdateApiService) UpdateTimer(ctx context.Context, request *Update
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-    if request.SupportedFeatures != nil {
-        
-        localVarQueryParams.Add("supported-features", openapi.ParameterToString(request.SupportedFeatures, ""))
-    } 
-    localVarHTTPContentTypes := []string{ "application/json-patch+json" }
-    
-    localVarHeaderParams["Content-Type"] = localVarHTTPContentTypes[0] // use the first content type specified in 'consumes'
+
+	if request.SupportedFeatures != nil {
+
+		localVarQueryParams.Add("supported-features", openapi.ParameterToString(request.SupportedFeatures, ""))
+	}
+	localVarHTTPContentTypes := []string{"application/json-patch+json"}
+
+	localVarHeaderParams["Content-Type"] = localVarHTTPContentTypes[0] // use the first content type specified in 'consumes'
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{ "application/json", "application/problem+json" }
+	localVarHTTPHeaderAccepts := []string{"application/json", "application/problem+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := strings.Join(localVarHTTPHeaderAccepts, ", ")
@@ -105,11 +105,8 @@ func (a *TimerUpdateApiService) UpdateTimer(ctx context.Context, request *Update
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 
-
-
 	// body params
 	localVarPostBody = request.PatchItem
-
 
 	r, err := openapi.PrepareRequest(ctx, a.client.cfg, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -127,77 +124,77 @@ func (a *TimerUpdateApiService) UpdateTimer(ctx context.Context, request *Update
 		return nil, err
 	}
 
-    apiError := openapi.GenericOpenAPIError{
-        RawBody:     localVarBody,
-        ErrorStatus: localVarHTTPResponse.StatusCode,
-    }
+	apiError := openapi.GenericOpenAPIError{
+		RawBody:     localVarBody,
+		ErrorStatus: localVarHTTPResponse.Status,
+	}
 
-    switch localVarHTTPResponse.StatusCode {
-        case 200:
-            err = openapi.Deserialize(&localVarReturnValue.PatchResult, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-            if err != nil {
-                return nil, err
-            }
-            return &localVarReturnValue, nil
-        case 204:
-        return &localVarReturnValue, apiError
-        case 400:
-            var v UpdateTimerError
-            err = openapi.Deserialize(&v.ProblemDetails, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-            if err != nil {
-                return nil, err
-            }
-            apiError.ErrorModel = v
-            return nil, apiError
-        case 401:
-            var v UpdateTimerError
-            err = openapi.Deserialize(&v.ProblemDetails, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-            if err != nil {
-                return nil, err
-            }
-            apiError.ErrorModel = v
-            return nil, apiError
-        case 403:
-            var v UpdateTimerError
-            err = openapi.Deserialize(&v.ProblemDetails, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-            if err != nil {
-                return nil, err
-            }
-            apiError.ErrorModel = v
-            return nil, apiError
-        case 404:
-            var v UpdateTimerError
-            err = openapi.Deserialize(&v.ProblemDetails, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-            if err != nil {
-                return nil, err
-            }
-            apiError.ErrorModel = v
-            return nil, apiError
-        case 500:
-            var v UpdateTimerError
-            err = openapi.Deserialize(&v.ProblemDetails, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-            if err != nil {
-                return nil, err
-            }
-            apiError.ErrorModel = v
-            return nil, apiError
-        case 503:
-            var v UpdateTimerError
-            err = openapi.Deserialize(&v.ProblemDetails, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-            if err != nil {
-                return nil, err
-            }
-            apiError.ErrorModel = v
-            return nil, apiError
-        default:
-        return &localVarReturnValue, apiError
-    }
+	switch localVarHTTPResponse.StatusCode {
+	case 200:
+		err = openapi.Deserialize(&localVarReturnValue.PatchResult, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			return nil, err
+		}
+		return &localVarReturnValue, nil
+	case 204:
+		return &localVarReturnValue, apiError
+	case 400:
+		var v UpdateTimerError
+		err = openapi.Deserialize(&v.ProblemDetails, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			return nil, err
+		}
+		apiError.ErrorModel = v
+		return nil, apiError
+	case 401:
+		var v UpdateTimerError
+		err = openapi.Deserialize(&v.ProblemDetails, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			return nil, err
+		}
+		apiError.ErrorModel = v
+		return nil, apiError
+	case 403:
+		var v UpdateTimerError
+		err = openapi.Deserialize(&v.ProblemDetails, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			return nil, err
+		}
+		apiError.ErrorModel = v
+		return nil, apiError
+	case 404:
+		var v UpdateTimerError
+		err = openapi.Deserialize(&v.ProblemDetails, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			return nil, err
+		}
+		apiError.ErrorModel = v
+		return nil, apiError
+	case 500:
+		var v UpdateTimerError
+		err = openapi.Deserialize(&v.ProblemDetails, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			return nil, err
+		}
+		apiError.ErrorModel = v
+		return nil, apiError
+	case 503:
+		var v UpdateTimerError
+		err = openapi.Deserialize(&v.ProblemDetails, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			return nil, err
+		}
+		apiError.ErrorModel = v
+		return nil, apiError
+	default:
+		return &localVarReturnValue, apiError
+	}
 }
 
 type UpdateTimerResponse struct {
-        PatchResult models.PatchResult
+	PatchResult models.PatchResult
 }
 
 type UpdateTimerError struct {
-        PatchResult models.ProblemDetails
+	ProblemDetails models.ProblemDetails
 }
