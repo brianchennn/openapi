@@ -1,7 +1,7 @@
 /*
  * Nudsf_Timer
  *
- * Nudsf Timer Service.   © 2022, 3GPP Organizational Partners (ARIB, ATIS, CCSA, ETSI, TSDSI, TTA, TTC).   All rights reserved. 
+ * Nudsf Timer Service.   © 2022, 3GPP Organizational Partners (ARIB, ATIS, CCSA, ETSI, TSDSI, TTA, TTC).   All rights reserved.
  *
  * Source file: 3GPP TS 29.598 UDSF Services, V17.6.0.
  * Url: https://www.3gpp.org/ftp/Specs/archive/29_series/29.598/
@@ -13,14 +13,14 @@
 package Nudsf_Timer
 
 import (
-    "bitbucket.org/free5GC/openapi"
-    "bitbucket.org/free5GC/openapi/models"
+	"github.com/free5gc/openapi"
+	"github.com/free5gc/openapi/models"
 
 	"context"
+	"fmt"
 	"io/ioutil"
 	"net/url"
 	"strings"
-	"fmt"
 )
 
 // Linger please
@@ -43,23 +43,23 @@ TimerStopApiService Delete a Timer with an user provided TimerId
 
 // DeleteTimerRequest
 type DeleteTimerRequest struct {
-    RealmId *string
-    StorageId *string
-    TimerId *string
-    SupportedFeatures *string
+	RealmId           *string
+	StorageId         *string
+	TimerId           *string
+	SupportedFeatures *string
 }
 
 func (r *DeleteTimerRequest) SetRealmId(RealmId string) {
-    r.RealmId = &RealmId
+	r.RealmId = &RealmId
 }
 func (r *DeleteTimerRequest) SetStorageId(StorageId string) {
-    r.StorageId = &StorageId
+	r.StorageId = &StorageId
 }
 func (r *DeleteTimerRequest) SetTimerId(TimerId string) {
-    r.TimerId = &TimerId
+	r.TimerId = &TimerId
 }
 func (r *DeleteTimerRequest) SetSupportedFeatures(SupportedFeatures string) {
-    r.SupportedFeatures = &SupportedFeatures
+	r.SupportedFeatures = &SupportedFeatures
 }
 
 func (a *TimerStopApiService) DeleteTimer(ctx context.Context, request *DeleteTimerRequest) (*DeleteTimerResponse, error) {
@@ -81,27 +81,24 @@ func (a *TimerStopApiService) DeleteTimer(ctx context.Context, request *DeleteTi
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	
-    if request.SupportedFeatures != nil {
-        
-        localVarQueryParams.Add("supported-features", openapi.ParameterToString(request.SupportedFeatures, ""))
-    } 
 
-    localVarHTTPContentTypes := []string{"application/json"}
+	if request.SupportedFeatures != nil {
 
-    localVarHeaderParams["Content-Type"] = localVarHTTPContentTypes[0] // use the first content type specified in 'consumes'
+		localVarQueryParams.Add("supported-features", openapi.ParameterToString(request.SupportedFeatures, ""))
+	}
+
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	localVarHeaderParams["Content-Type"] = localVarHTTPContentTypes[0] // use the first content type specified in 'consumes'
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{ "application/problem+json" }
+	localVarHTTPHeaderAccepts := []string{"application/problem+json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := strings.Join(localVarHTTPHeaderAccepts, ", ")
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-
-
-
 
 	r, err := openapi.PrepareRequest(ctx, a.client.cfg, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
 	if err != nil {
@@ -119,70 +116,70 @@ func (a *TimerStopApiService) DeleteTimer(ctx context.Context, request *DeleteTi
 		return nil, err
 	}
 
-    apiError := openapi.GenericOpenAPIError{
-        RawBody:     localVarBody,
-        ErrorStatus: localVarHTTPResponse.StatusCode,
-    }
+	apiError := openapi.GenericOpenAPIError{
+		RawBody:     localVarBody,
+		ErrorStatus: localVarHTTPResponse.Status,
+	}
 
-    switch localVarHTTPResponse.StatusCode {
-        case 204:
-        return &localVarReturnValue, apiError
-        case 400:
-            var v DeleteTimerError
-            err = openapi.Deserialize(&v.ProblemDetails, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-            if err != nil {
-                return nil, err
-            }
-            apiError.ErrorModel = v
-            return nil, apiError
-        case 401:
-            var v DeleteTimerError
-            err = openapi.Deserialize(&v.ProblemDetails, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-            if err != nil {
-                return nil, err
-            }
-            apiError.ErrorModel = v
-            return nil, apiError
-        case 403:
-            var v DeleteTimerError
-            err = openapi.Deserialize(&v.ProblemDetails, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-            if err != nil {
-                return nil, err
-            }
-            apiError.ErrorModel = v
-            return nil, apiError
-        case 404:
-            var v DeleteTimerError
-            err = openapi.Deserialize(&v.ProblemDetails, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-            if err != nil {
-                return nil, err
-            }
-            apiError.ErrorModel = v
-            return nil, apiError
-        case 500:
-            var v DeleteTimerError
-            err = openapi.Deserialize(&v.ProblemDetails, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-            if err != nil {
-                return nil, err
-            }
-            apiError.ErrorModel = v
-            return nil, apiError
-        case 503:
-            var v DeleteTimerError
-            err = openapi.Deserialize(&v.ProblemDetails, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-            if err != nil {
-                return nil, err
-            }
-            apiError.ErrorModel = v
-            return nil, apiError
-        default:
-        return &localVarReturnValue, apiError
-    }
+	switch localVarHTTPResponse.StatusCode {
+	case 204:
+		return &localVarReturnValue, apiError
+	case 400:
+		var v DeleteTimerError
+		err = openapi.Deserialize(&v.ProblemDetails, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			return nil, err
+		}
+		apiError.ErrorModel = v
+		return nil, apiError
+	case 401:
+		var v DeleteTimerError
+		err = openapi.Deserialize(&v.ProblemDetails, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			return nil, err
+		}
+		apiError.ErrorModel = v
+		return nil, apiError
+	case 403:
+		var v DeleteTimerError
+		err = openapi.Deserialize(&v.ProblemDetails, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			return nil, err
+		}
+		apiError.ErrorModel = v
+		return nil, apiError
+	case 404:
+		var v DeleteTimerError
+		err = openapi.Deserialize(&v.ProblemDetails, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			return nil, err
+		}
+		apiError.ErrorModel = v
+		return nil, apiError
+	case 500:
+		var v DeleteTimerError
+		err = openapi.Deserialize(&v.ProblemDetails, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			return nil, err
+		}
+		apiError.ErrorModel = v
+		return nil, apiError
+	case 503:
+		var v DeleteTimerError
+		err = openapi.Deserialize(&v.ProblemDetails, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+		if err != nil {
+			return nil, err
+		}
+		apiError.ErrorModel = v
+		return nil, apiError
+	default:
+		return &localVarReturnValue, apiError
+	}
 }
 
 type DeleteTimerResponse struct {
-        }
+}
 
 type DeleteTimerError struct {
-         models.ProblemDetails
+	models.ProblemDetails
 }
