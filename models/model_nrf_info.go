@@ -1,7 +1,7 @@
 /*
  * NRF NFManagement Service
  *
- * NRF NFManagement Service.   © 2023, 3GPP Organizational Partners (ARIB, ATIS, CCSA, ETSI, TSDSI, TTA, TTC).   All rights reserved. 
+ * NRF NFManagement Service.   © 2023, 3GPP Organizational Partners (ARIB, ATIS, CCSA, ETSI, TSDSI, TTA, TTC).   All rights reserved.
  *
  * Source file: 3GPP TS 29.510 V17.11.0; 5G System; Network Function Repository Services; Stage 3
  * Url: https://www.3gpp.org/ftp/Specs/archive/29_series/29.510/
@@ -12,73 +12,71 @@
 
 package models
 
-
-
 // Information of an NRF NF Instance, used in hierarchical NRF deployments
 type NrfInfo struct {
 	// A map (list of key-value pairs) where nfInstanceId serves as key
-	ServedUdrInfo map[string]*interface{} `json:"servedUdrInfo,omitempty" yaml:"servedUdrInfo" bson:"servedUdrInfo"`
+	ServedUdrInfo map[string]*UdrInfo `json:"servedUdrInfo,omitempty" yaml:"servedUdrInfo" bson:"servedUdrInfo"`
 	// A map (list of key-value pairs) where nfInstanceId serves as key
-	ServedUdrInfoList map[string]*map[string]*interface{} `json:"servedUdrInfoList,omitempty" yaml:"servedUdrInfoList" bson:"servedUdrInfoList"`
+	ServedUdrInfoList map[string]*map[string]*UdrInfo `json:"servedUdrInfoList,omitempty" yaml:"servedUdrInfoList" bson:"servedUdrInfoList"`
 	// A map (list of key-value pairs) where nfInstanceId serves as key
-	ServedUdmInfo map[string]*interface{} `json:"servedUdmInfo,omitempty" yaml:"servedUdmInfo" bson:"servedUdmInfo"`
+	ServedUdmInfo map[string]*UdmInfo `json:"servedUdmInfo,omitempty" yaml:"servedUdmInfo" bson:"servedUdmInfo"`
 	// A map (list of key-value pairs) where nfInstanceId serves as key
-	ServedUdmInfoList map[string]*map[string]*interface{} `json:"servedUdmInfoList,omitempty" yaml:"servedUdmInfoList" bson:"servedUdmInfoList"`
+	ServedUdmInfoList map[string]*map[string]*UdmInfo `json:"servedUdmInfoList,omitempty" yaml:"servedUdmInfoList" bson:"servedUdmInfoList"`
 	// A map (list of key-value pairs) where nfInstanceId serves as key
-	ServedAusfInfo map[string]*interface{} `json:"servedAusfInfo,omitempty" yaml:"servedAusfInfo" bson:"servedAusfInfo"`
+	ServedAusfInfo map[string]*AusfInfo `json:"servedAusfInfo,omitempty" yaml:"servedAusfInfo" bson:"servedAusfInfo"`
 	// A map (list of key-value pairs) where nfInstanceId serves as key
-	ServedAusfInfoList map[string]*map[string]*interface{} `json:"servedAusfInfoList,omitempty" yaml:"servedAusfInfoList" bson:"servedAusfInfoList"`
+	ServedAusfInfoList map[string]*map[string]*AusfInfo `json:"servedAusfInfoList,omitempty" yaml:"servedAusfInfoList" bson:"servedAusfInfoList"`
 	// A map (list of key-value pairs) where nfInstanceId serves as key
-	ServedAmfInfo map[string]*interface{} `json:"servedAmfInfo,omitempty" yaml:"servedAmfInfo" bson:"servedAmfInfo"`
+	ServedAmfInfo map[string]*AmfInfo `json:"servedAmfInfo,omitempty" yaml:"servedAmfInfo" bson:"servedAmfInfo"`
 	// A map (list of key-value pairs) where nfInstanceId serves as key
-	ServedAmfInfoList map[string]*map[string]*interface{} `json:"servedAmfInfoList,omitempty" yaml:"servedAmfInfoList" bson:"servedAmfInfoList"`
+	ServedAmfInfoList map[string]*map[string]*AmfInfo `json:"servedAmfInfoList,omitempty" yaml:"servedAmfInfoList" bson:"servedAmfInfoList"`
 	// A map (list of key-value pairs) where nfInstanceId serves as key
-	ServedSmfInfo map[string]*interface{} `json:"servedSmfInfo,omitempty" yaml:"servedSmfInfo" bson:"servedSmfInfo"`
+	ServedSmfInfo map[string]*SmfInfo `json:"servedSmfInfo,omitempty" yaml:"servedSmfInfo" bson:"servedSmfInfo"`
 	// A map (list of key-value pairs) where nfInstanceId serves as key
-	ServedSmfInfoList map[string]*map[string]*interface{} `json:"servedSmfInfoList,omitempty" yaml:"servedSmfInfoList" bson:"servedSmfInfoList"`
+	ServedSmfInfoList map[string]*map[string]*SmfInfo `json:"servedSmfInfoList,omitempty" yaml:"servedSmfInfoList" bson:"servedSmfInfoList"`
 	// A map (list of key-value pairs) where nfInstanceId serves as key
-	ServedUpfInfo map[string]*interface{} `json:"servedUpfInfo,omitempty" yaml:"servedUpfInfo" bson:"servedUpfInfo"`
+	ServedUpfInfo map[string]*UpfInfo `json:"servedUpfInfo,omitempty" yaml:"servedUpfInfo" bson:"servedUpfInfo"`
 	// A map (list of key-value pairs) where nfInstanceId serves as key
-	ServedUpfInfoList map[string]*map[string]*interface{} `json:"servedUpfInfoList,omitempty" yaml:"servedUpfInfoList" bson:"servedUpfInfoList"`
+	ServedUpfInfoList map[string]*map[string]*UpfInfo `json:"servedUpfInfoList,omitempty" yaml:"servedUpfInfoList" bson:"servedUpfInfoList"`
 	// A map (list of key-value pairs) where nfInstanceId serves as key
-	ServedPcfInfo map[string]*interface{} `json:"servedPcfInfo,omitempty" yaml:"servedPcfInfo" bson:"servedPcfInfo"`
+	ServedPcfInfo map[string]*PcfInfo `json:"servedPcfInfo,omitempty" yaml:"servedPcfInfo" bson:"servedPcfInfo"`
 	// A map (list of key-value pairs) where nfInstanceId serves as key
-	ServedPcfInfoList map[string]*map[string]*interface{} `json:"servedPcfInfoList,omitempty" yaml:"servedPcfInfoList" bson:"servedPcfInfoList"`
+	ServedPcfInfoList map[string]*map[string]*PcfInfo `json:"servedPcfInfoList,omitempty" yaml:"servedPcfInfoList" bson:"servedPcfInfoList"`
 	// A map (list of key-value pairs) where nfInstanceId serves as key
-	ServedBsfInfo map[string]*interface{} `json:"servedBsfInfo,omitempty" yaml:"servedBsfInfo" bson:"servedBsfInfo"`
+	ServedBsfInfo map[string]*BsfInfo `json:"servedBsfInfo,omitempty" yaml:"servedBsfInfo" bson:"servedBsfInfo"`
 	// A map (list of key-value pairs) where nfInstanceId serves as key
-	ServedBsfInfoList map[string]*map[string]*interface{} `json:"servedBsfInfoList,omitempty" yaml:"servedBsfInfoList" bson:"servedBsfInfoList"`
+	ServedBsfInfoList map[string]*map[string]*BsfInfo `json:"servedBsfInfoList,omitempty" yaml:"servedBsfInfoList" bson:"servedBsfInfoList"`
 	// A map (list of key-value pairs) where nfInstanceId serves as key
-	ServedChfInfo map[string]*interface{} `json:"servedChfInfo,omitempty" yaml:"servedChfInfo" bson:"servedChfInfo"`
+	ServedChfInfo map[string]*ChfInfo `json:"servedChfInfo,omitempty" yaml:"servedChfInfo" bson:"servedChfInfo"`
 	// A map (list of key-value pairs) where nfInstanceId serves as key
-	ServedChfInfoList map[string]*map[string]*interface{} `json:"servedChfInfoList,omitempty" yaml:"servedChfInfoList" bson:"servedChfInfoList"`
+	ServedChfInfoList map[string]*map[string]*ChfInfo `json:"servedChfInfoList,omitempty" yaml:"servedChfInfoList" bson:"servedChfInfoList"`
 	// A map (list of key-value pairs) where nfInstanceId serves as key
-	ServedNefInfo map[string]*interface{} `json:"servedNefInfo,omitempty" yaml:"servedNefInfo" bson:"servedNefInfo"`
+	ServedNefInfo map[string]*NefInfo `json:"servedNefInfo,omitempty" yaml:"servedNefInfo" bson:"servedNefInfo"`
 	// A map (list of key-value pairs) where nfInstanceId serves as key
-	ServedNwdafInfo map[string]*interface{} `json:"servedNwdafInfo,omitempty" yaml:"servedNwdafInfo" bson:"servedNwdafInfo"`
+	ServedNwdafInfo map[string]*NwdafInfo `json:"servedNwdafInfo,omitempty" yaml:"servedNwdafInfo" bson:"servedNwdafInfo"`
 	// A map (list of key-value pairs) where NF Instance Id serves as key
 	ServedNwdafInfoList map[string]*map[string]*NwdafInfo `json:"servedNwdafInfoList,omitempty" yaml:"servedNwdafInfoList" bson:"servedNwdafInfoList"`
 	// A map (list of key-value pairs) where nfInstanceId serves as key
-	ServedPcscfInfoList map[string]*map[string]*interface{} `json:"servedPcscfInfoList,omitempty" yaml:"servedPcscfInfoList" bson:"servedPcscfInfoList"`
+	ServedPcscfInfoList map[string]*map[string]*PcscfInfo `json:"servedPcscfInfoList,omitempty" yaml:"servedPcscfInfoList" bson:"servedPcscfInfoList"`
 	// A map (list of key-value pairs) where nfInstanceId serves as key
-	ServedGmlcInfo map[string]*interface{} `json:"servedGmlcInfo,omitempty" yaml:"servedGmlcInfo" bson:"servedGmlcInfo"`
+	ServedGmlcInfo map[string]*GmlcInfo `json:"servedGmlcInfo,omitempty" yaml:"servedGmlcInfo" bson:"servedGmlcInfo"`
 	// A map (list of key-value pairs) where nfInstanceId serves as key
-	ServedLmfInfo map[string]*interface{} `json:"servedLmfInfo,omitempty" yaml:"servedLmfInfo" bson:"servedLmfInfo"`
+	ServedLmfInfo map[string]*LmfInfo `json:"servedLmfInfo,omitempty" yaml:"servedLmfInfo" bson:"servedLmfInfo"`
 	// A map (list of key-value pairs) where nfInstanceId serves as key
 	ServedNfInfo map[string]*NfInfo `json:"servedNfInfo,omitempty" yaml:"servedNfInfo" bson:"servedNfInfo"`
 	// A map (list of key-value pairs) where nfInstanceId serves as key
-	ServedHssInfoList map[string]*map[string]*interface{} `json:"servedHssInfoList,omitempty" yaml:"servedHssInfoList" bson:"servedHssInfoList"`
+	ServedHssInfoList map[string]*map[string]*HssInfo `json:"servedHssInfoList,omitempty" yaml:"servedHssInfoList" bson:"servedHssInfoList"`
 	// A map (list of key-value pairs) where nfInstanceId serves as key
-	ServedUdsfInfo map[string]*interface{} `json:"servedUdsfInfo,omitempty" yaml:"servedUdsfInfo" bson:"servedUdsfInfo"`
+	ServedUdsfInfo map[string]*UdsfInfo `json:"servedUdsfInfo,omitempty" yaml:"servedUdsfInfo" bson:"servedUdsfInfo"`
 	// A map (list of key-value pairs) where nfInstanceId serves as key
-	ServedUdsfInfoList map[string]*map[string]*interface{} `json:"servedUdsfInfoList,omitempty" yaml:"servedUdsfInfoList" bson:"servedUdsfInfoList"`
+	ServedUdsfInfoList map[string]*map[string]*UdsfInfo `json:"servedUdsfInfoList,omitempty" yaml:"servedUdsfInfoList" bson:"servedUdsfInfoList"`
 	// A map (list of key-value pairs) where nfInstanceId serves as key
-	ServedScpInfoList map[string]*interface{} `json:"servedScpInfoList,omitempty" yaml:"servedScpInfoList" bson:"servedScpInfoList"`
+	ServedScpInfoList map[string]*ScpInfo `json:"servedScpInfoList,omitempty" yaml:"servedScpInfoList" bson:"servedScpInfoList"`
 	// A map (list of key-value pairs) where nfInstanceId serves as key
-	ServedSeppInfoList map[string]*interface{} `json:"servedSeppInfoList,omitempty" yaml:"servedSeppInfoList" bson:"servedSeppInfoList"`
+	ServedSeppInfoList map[string]*SeppInfo `json:"servedSeppInfoList,omitempty" yaml:"servedSeppInfoList" bson:"servedSeppInfoList"`
 	// A map (list of key-value pairs) where NF Instance Id serves as key
-	ServedAanfInfoList map[string]*map[string]*interface{} `json:"servedAanfInfoList,omitempty" yaml:"servedAanfInfoList" bson:"servedAanfInfoList"`
-	Served5gDdnmfInfo map[string]*Model5GDdnmfInfo `json:"served5gDdnmfInfo,omitempty" yaml:"served5gDdnmfInfo" bson:"served5gDdnmfInfo"`
+	ServedAanfInfoList map[string]*map[string]*AanfInfo `json:"servedAanfInfoList,omitempty" yaml:"servedAanfInfoList" bson:"servedAanfInfoList"`
+	Served5gDdnmfInfo  map[string]*Model5GDdnmfInfo     `json:"served5gDdnmfInfo,omitempty" yaml:"served5gDdnmfInfo" bson:"served5gDdnmfInfo"`
 	// A map (list of key-value pairs) where NF Instance Id serves as key
 	ServedMfafInfoList map[string]*MfafInfo `json:"servedMfafInfoList,omitempty" yaml:"servedMfafInfoList" bson:"servedMfafInfoList"`
 	// A map (list of key-value pairs) where NF Instance Id serves as key
@@ -86,7 +84,7 @@ type NrfInfo struct {
 	// A map (list of key-value pairs) where NF Instance Id serves as key
 	ServedDccfInfoList map[string]*DccfInfo `json:"servedDccfInfoList,omitempty" yaml:"servedDccfInfoList" bson:"servedDccfInfoList"`
 	// A map (list of key-value pairs) where nfInstanceId serves as key
-	ServedMbSmfInfoList map[string]*map[string]*interface{} `json:"servedMbSmfInfoList,omitempty" yaml:"servedMbSmfInfoList" bson:"servedMbSmfInfoList"`
+	ServedMbSmfInfoList map[string]*map[string]*MbSmfInfo `json:"servedMbSmfInfoList,omitempty" yaml:"servedMbSmfInfoList" bson:"servedMbSmfInfoList"`
 	// A map (list of key-value pairs) where NF Instance Id serves as key
 	ServedTsctsfInfoList map[string]*map[string]*TsctsfInfo `json:"servedTsctsfInfoList,omitempty" yaml:"servedTsctsfInfoList" bson:"servedTsctsfInfoList"`
 	// A map (list of key-value pairs) where NF Instance Id serves as key
