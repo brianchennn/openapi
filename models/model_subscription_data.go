@@ -1,7 +1,7 @@
 /*
  * NRF NFManagement Service
  *
- * NRF NFManagement Service.   © 2023, 3GPP Organizational Partners (ARIB, ATIS, CCSA, ETSI, TSDSI, TTA, TTC).   All rights reserved. 
+ * NRF NFManagement Service.   © 2023, 3GPP Organizational Partners (ARIB, ATIS, CCSA, ETSI, TSDSI, TTA, TTC).   All rights reserved.
  *
  * Source file: 3GPP TS 29.510 V17.11.0; 5G System; Network Function Repository Services; Stage 3
  * Url: https://www.3gpp.org/ftp/Specs/archive/29_series/29.510/
@@ -11,42 +11,45 @@
  */
 
 package models
+
 import (
 	"time"
 )
 
-
-
-// Information of a subscription to notifications to NRF events, included in subscription requests and responses 
+// Information of a subscription to notifications to NRF events, included in subscription requests and responses
 type SubscriptionData struct {
+	// Old version, reserve for AMF
+	AmfStatusUri string  `json:"amfStatusUri"`
+	GuamiList    []Guami `json:"guamiList,omitempty"`
+
 	NfStatusNotificationUri string `json:"nfStatusNotificationUri" yaml:"nfStatusNotificationUri" bson:"nfStatusNotificationUri"`
-	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a  Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.  
-	ReqNfInstanceId string `json:"reqNfInstanceId,omitempty" yaml:"reqNfInstanceId" bson:"reqNfInstanceId"`
-	SubscrCond *SubscrCond `json:"subscrCond,omitempty" yaml:"subscrCond" bson:"subscrCond"`
-	SubscriptionId string `json:"subscriptionId" yaml:"subscriptionId" bson:"subscriptionId"`
+	// String uniquely identifying a NF instance. The format of the NF Instance ID shall be a  Universally Unique Identifier (UUID) version 4, as described in IETF RFC 4122.
+	ReqNfInstanceId string      `json:"reqNfInstanceId,omitempty" yaml:"reqNfInstanceId" bson:"reqNfInstanceId"`
+	SubscrCond      *SubscrCond `json:"subscrCond,omitempty" yaml:"subscrCond" bson:"subscrCond"`
+	SubscriptionId  string      `json:"subscriptionId" yaml:"subscriptionId" bson:"subscriptionId"`
 	// string with format 'date-time' as defined in OpenAPI.
-	ValidityTime *time.Time `json:"validityTime,omitempty" yaml:"validityTime" bson:"validityTime"`
+	ValidityTime   *time.Time               `json:"validityTime,omitempty" yaml:"validityTime" bson:"validityTime"`
 	ReqNotifEvents []*NotificationEventType `json:"reqNotifEvents,omitempty" yaml:"reqNotifEvents" bson:"reqNotifEvents"`
-	PlmnId *PlmnId `json:"plmnId,omitempty" yaml:"plmnId" bson:"plmnId"`
-	// This represents the Network Identifier, which together with a PLMN ID is used to identify an SNPN (see 3GPP TS 23.003 and 3GPP TS 23.501 clause 5.30.2.1).  
-	Nid string `json:"nid,omitempty" yaml:"nid" bson:"nid"`
+	PlmnId         *PlmnId                  `json:"plmnId,omitempty" yaml:"plmnId" bson:"plmnId"`
+	// This represents the Network Identifier, which together with a PLMN ID is used to identify an SNPN (see 3GPP TS 23.003 and 3GPP TS 23.501 clause 5.30.2.1).
+	Nid            string          `json:"nid,omitempty" yaml:"nid" bson:"nid"`
 	NotifCondition *NotifCondition `json:"notifCondition,omitempty" yaml:"notifCondition" bson:"notifCondition"`
-	ReqNfType NfType `json:"reqNfType,omitempty" yaml:"reqNfType" bson:"reqNfType"`
+	ReqNfType      NfType          `json:"reqNfType,omitempty" yaml:"reqNfType" bson:"reqNfType"`
 	// Fully Qualified Domain Name
-	ReqNfFqdn string `json:"reqNfFqdn,omitempty" yaml:"reqNfFqdn" bson:"reqNfFqdn"`
-	ReqSnssais []*ExtSnssai `json:"reqSnssais,omitempty" yaml:"reqSnssais" bson:"reqSnssais"`
+	ReqNfFqdn         string        `json:"reqNfFqdn,omitempty" yaml:"reqNfFqdn" bson:"reqNfFqdn"`
+	ReqSnssais        []*ExtSnssai  `json:"reqSnssais,omitempty" yaml:"reqSnssais" bson:"reqSnssais"`
 	ReqPerPlmnSnssais []*PlmnSnssai `json:"reqPerPlmnSnssais,omitempty" yaml:"reqPerPlmnSnssais" bson:"reqPerPlmnSnssais"`
-	ReqPlmnList []*PlmnId `json:"reqPlmnList,omitempty" yaml:"reqPlmnList" bson:"reqPlmnList"`
-	ReqSnpnList []*PlmnIdNid `json:"reqSnpnList,omitempty" yaml:"reqSnpnList" bson:"reqSnpnList"`
-	ServingScope []*string `json:"servingScope,omitempty" yaml:"servingScope" bson:"servingScope"`
-	// A string used to indicate the features supported by an API that is used as defined in clause  6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in  hexadecimal representation Each character in the string shall take a value of \"0\" to \"9\",  \"a\" to \"f\" or \"A\" to \"F\" and shall represent the support of 4 features as described in  table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported. 
+	ReqPlmnList       []*PlmnId     `json:"reqPlmnList,omitempty" yaml:"reqPlmnList" bson:"reqPlmnList"`
+	ReqSnpnList       []*PlmnIdNid  `json:"reqSnpnList,omitempty" yaml:"reqSnpnList" bson:"reqSnpnList"`
+	ServingScope      []*string     `json:"servingScope,omitempty" yaml:"servingScope" bson:"servingScope"`
+	// A string used to indicate the features supported by an API that is used as defined in clause  6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in  hexadecimal representation Each character in the string shall take a value of \"0\" to \"9\",  \"a\" to \"f\" or \"A\" to \"F\" and shall represent the support of 4 features as described in  table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
 	RequesterFeatures string `json:"requesterFeatures,omitempty" yaml:"requesterFeatures" bson:"requesterFeatures"`
-	// A string used to indicate the features supported by an API that is used as defined in clause  6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in  hexadecimal representation Each character in the string shall take a value of \"0\" to \"9\",  \"a\" to \"f\" or \"A\" to \"F\" and shall represent the support of 4 features as described in  table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported. 
+	// A string used to indicate the features supported by an API that is used as defined in clause  6.6 in 3GPP TS 29.500. The string shall contain a bitmask indicating supported features in  hexadecimal representation Each character in the string shall take a value of \"0\" to \"9\",  \"a\" to \"f\" or \"A\" to \"F\" and shall represent the support of 4 features as described in  table 5.2.2-3. The most significant character representing the highest-numbered features shall  appear first in the string, and the character representing features 1 to 4 shall appear last  in the string. The list of features and their numbering (starting with 1) are defined  separately for each API. If the string contains a lower number of characters than there are  defined features for an API, all features that would be represented by characters that are not  present in the string are not supported.
 	NrfSupportedFeatures string `json:"nrfSupportedFeatures,omitempty" yaml:"nrfSupportedFeatures" bson:"nrfSupportedFeatures"`
 	// String providing an URI formatted according to RFC 3986.
-	HnrfUri string `json:"hnrfUri,omitempty" yaml:"hnrfUri" bson:"hnrfUri"`
-	OnboardingCapability bool `json:"onboardingCapability,omitempty" yaml:"onboardingCapability" bson:"onboardingCapability"`
+	HnrfUri              string `json:"hnrfUri,omitempty" yaml:"hnrfUri" bson:"hnrfUri"`
+	OnboardingCapability bool   `json:"onboardingCapability,omitempty" yaml:"onboardingCapability" bson:"onboardingCapability"`
 	// Fully Qualified Domain Name
-	TargetHni string `json:"targetHni,omitempty" yaml:"targetHni" bson:"targetHni"`
+	TargetHni         string `json:"targetHni,omitempty" yaml:"targetHni" bson:"targetHni"`
 	PreferredLocality string `json:"preferredLocality,omitempty" yaml:"preferredLocality" bson:"preferredLocality"`
 }
