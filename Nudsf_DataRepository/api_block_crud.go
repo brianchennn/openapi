@@ -335,10 +335,10 @@ func (a *BlockCRUDApiService) DeleteBlock(ctx context.Context, request *DeleteBl
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath() + "/{realmId}/{storageId}/records/{recordId}/blocks/{blockId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"realmId"+"}", fmt.Sprintf("%v", request.RealmId), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"storageId"+"}", fmt.Sprintf("%v", request.StorageId), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"recordId"+"}", fmt.Sprintf("%v", request.RecordId), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"blockId"+"}", fmt.Sprintf("%v", request.BlockId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"realmId"+"}", fmt.Sprintf("%v", *request.RealmId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"storageId"+"}", fmt.Sprintf("%v", *request.StorageId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"recordId"+"}", fmt.Sprintf("%v", *request.RecordId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"blockId"+"}", fmt.Sprintf("%v", *request.BlockId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -549,10 +549,10 @@ func (a *BlockCRUDApiService) GetBlock(ctx context.Context, request *GetBlockReq
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath() + "/{realmId}/{storageId}/records/{recordId}/blocks/{blockId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"realmId"+"}", fmt.Sprintf("%v", request.RealmId), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"storageId"+"}", fmt.Sprintf("%v", request.StorageId), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"recordId"+"}", fmt.Sprintf("%v", request.RecordId), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"blockId"+"}", fmt.Sprintf("%v", request.BlockId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"realmId"+"}", fmt.Sprintf("%v", *request.RealmId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"storageId"+"}", fmt.Sprintf("%v", *request.StorageId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"recordId"+"}", fmt.Sprintf("%v", *request.RecordId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"blockId"+"}", fmt.Sprintf("%v", *request.BlockId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
