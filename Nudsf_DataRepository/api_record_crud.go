@@ -288,7 +288,9 @@ func (a *RecordCRUDApiService) CreateOrModifyRecord(ctx context.Context, request
 		localVarQueryParams.Add("supported-features", openapi.ParameterToString(request.SupportedFeatures, ""))
 	}
 
-	localVarHTTPContentTypes := []string{"multipart/mixed"}
+	// TODO: According to TS 29.598, should use multipart/mixed as content-type instead of application/json
+	// localVarHTTPContentTypes := []string{"multipart/mixed"}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	localVarHeaderParams["Content-Type"] = localVarHTTPContentTypes[0] // use the first content type specified in 'consumes'
 
