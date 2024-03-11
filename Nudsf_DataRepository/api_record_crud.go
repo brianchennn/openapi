@@ -75,8 +75,8 @@ func (a *RecordCRUDApiService) BulkDeleteRecords(ctx context.Context, request *B
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath() + "/{realmId}/{storageId}/records"
-	localVarPath = strings.Replace(localVarPath, "{"+"realmId"+"}", fmt.Sprintf("%v", request.RealmId), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"storageId"+"}", fmt.Sprintf("%v", request.StorageId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"realmId"+"}", fmt.Sprintf("%v", *request.RealmId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"storageId"+"}", fmt.Sprintf("%v", *request.StorageId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -271,9 +271,9 @@ func (a *RecordCRUDApiService) CreateOrModifyRecord(ctx context.Context, request
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath() + "/{realmId}/{storageId}/records/{recordId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"realmId"+"}", fmt.Sprintf("%v", request.RealmId), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"storageId"+"}", fmt.Sprintf("%v", request.StorageId), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"recordId"+"}", fmt.Sprintf("%v", request.RecordId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"realmId"+"}", fmt.Sprintf("%v", *request.RealmId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"storageId"+"}", fmt.Sprintf("%v", *request.StorageId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"recordId"+"}", fmt.Sprintf("%v", *request.RecordId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -287,6 +287,7 @@ func (a *RecordCRUDApiService) CreateOrModifyRecord(ctx context.Context, request
 
 		localVarQueryParams.Add("supported-features", openapi.ParameterToString(request.SupportedFeatures, ""))
 	}
+
 	localVarHTTPContentTypes := []string{"multipart/mixed"}
 
 	localVarHeaderParams["Content-Type"] = localVarHTTPContentTypes[0] // use the first content type specified in 'consumes'
@@ -510,9 +511,9 @@ func (a *RecordCRUDApiService) DeleteRecord(ctx context.Context, request *Delete
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath() + "/{realmId}/{storageId}/records/{recordId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"realmId"+"}", fmt.Sprintf("%v", request.RealmId), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"storageId"+"}", fmt.Sprintf("%v", request.StorageId), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"recordId"+"}", fmt.Sprintf("%v", request.RecordId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"realmId"+"}", fmt.Sprintf("%v", *request.RealmId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"storageId"+"}", fmt.Sprintf("%v", *request.StorageId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"recordId"+"}", fmt.Sprintf("%v", *request.RecordId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -730,9 +731,9 @@ func (a *RecordCRUDApiService) GetMeta(ctx context.Context, request *GetMetaRequ
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath() + "/{realmId}/{storageId}/records/{recordId}/meta"
-	localVarPath = strings.Replace(localVarPath, "{"+"realmId"+"}", fmt.Sprintf("%v", request.RealmId), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"storageId"+"}", fmt.Sprintf("%v", request.StorageId), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"recordId"+"}", fmt.Sprintf("%v", request.RecordId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"realmId"+"}", fmt.Sprintf("%v", *request.RealmId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"storageId"+"}", fmt.Sprintf("%v", *request.StorageId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"recordId"+"}", fmt.Sprintf("%v", *request.RecordId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -930,9 +931,9 @@ func (a *RecordCRUDApiService) GetRecord(ctx context.Context, request *GetRecord
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath() + "/{realmId}/{storageId}/records/{recordId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"realmId"+"}", fmt.Sprintf("%v", request.RealmId), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"storageId"+"}", fmt.Sprintf("%v", request.StorageId), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"recordId"+"}", fmt.Sprintf("%v", request.RecordId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"realmId"+"}", fmt.Sprintf("%v", *request.RealmId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"storageId"+"}", fmt.Sprintf("%v", *request.StorageId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"recordId"+"}", fmt.Sprintf("%v", *request.RecordId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1140,8 +1141,8 @@ func (a *RecordCRUDApiService) SearchRecord(ctx context.Context, request *Search
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath() + "/{realmId}/{storageId}/records"
-	localVarPath = strings.Replace(localVarPath, "{"+"realmId"+"}", fmt.Sprintf("%v", request.RealmId), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"storageId"+"}", fmt.Sprintf("%v", request.StorageId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"realmId"+"}", fmt.Sprintf("%v", *request.RealmId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"storageId"+"}", fmt.Sprintf("%v", *request.StorageId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1341,9 +1342,9 @@ func (a *RecordCRUDApiService) UpdateMeta(ctx context.Context, request *UpdateMe
 
 	// create path and map variables
 	localVarPath := a.client.cfg.BasePath() + "/{realmId}/{storageId}/records/{recordId}/meta"
-	localVarPath = strings.Replace(localVarPath, "{"+"realmId"+"}", fmt.Sprintf("%v", request.RealmId), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"storageId"+"}", fmt.Sprintf("%v", request.StorageId), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"recordId"+"}", fmt.Sprintf("%v", request.RecordId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"realmId"+"}", fmt.Sprintf("%v", *request.RealmId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"storageId"+"}", fmt.Sprintf("%v", *request.StorageId), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"recordId"+"}", fmt.Sprintf("%v", *request.RecordId), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
